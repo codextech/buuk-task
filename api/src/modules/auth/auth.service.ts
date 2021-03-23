@@ -29,8 +29,6 @@ export class AuthService {
     );
     if (!isPasswordMatching)
       throw new BadRequestException('Inavlid Passsword or Email');
-    if (!user.isVerified)
-      throw new BadRequestException('email not verified');
 
     const { password, verifyShortToken, verifyExpires, ...result } = user;
     return result;

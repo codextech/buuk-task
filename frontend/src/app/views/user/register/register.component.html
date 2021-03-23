@@ -10,12 +10,12 @@
   <div class="form-side">
     <h6 class="mb-4">Register</h6>
 
-    <form [formGroup]="form"  #f="ngForm"  (ngSubmit)="onSubmit()" novalidate class="tooltip-label-right">
+    <form [formGroup]="form"  #f="ngForm"  (ngSubmit)="f.form.valid &&onSubmit()" novalidate class="tooltip-label-right">
 
         <label class="form-group has-float-label">
-        <input formControlName="email" type="email" class="form-control" name="email" placeholder="Email">
+        <input formControlName="name" type="text" class="form-control" name="name" placeholder="Name">
         <span>Name</span>
-        <div *ngIf="formFields.email.errors?.required && f.submitted" class="invalid-tooltip">Name is required!</div>
+        <div *ngIf="formFields.name.errors?.required && f.submitted" class="invalid-tooltip">Name is required!</div>
       </label>
 
       <label class="form-group has-float-label">
@@ -40,9 +40,9 @@
       </label>
 
       <div class="d-flex justify-content-between align-items-center">
-        <a routerLink="/user/forgot-password">{{ 'user.forgot-password' | translate }}?</a>
+        <a href="javascrip:;">Forgot Password?</a>
         <app-state-button [btnClass]="'btn btn-primary btn-lg btn-shadow'" [currentState]="buttonState"
-          [isDisabled]="buttonDisabled" click="onLoginClick()">
+          [isDisabled]="buttonDisabled">
           Register
         </app-state-button>
       </div>

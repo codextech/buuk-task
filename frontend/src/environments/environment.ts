@@ -5,13 +5,13 @@
 export const environment = {
   production: false,
   apiUrl: 'http://localhost:3000',
-  baseDomain: 'ideaplan.io',
-  s3BucketUrl: 'https://ideaplan.s3.us-east-2.amazonaws.com/',
+  baseDomain: 'localhost',
+  s3BucketUrl: '',
   defaultMenuType: 'menu-default',
   subHiddenBreakpoint: 1440,
   menuHiddenBreakpoint: 768,
   themeColorStorageKey: 'vien-themecolor',
-  isMultiColorActive: true,
+  isMultiColorActive: false,
   /*
   Color Options:
   'light.blueyale', 'light.blueolympic', 'light.bluenavy', 'light.greenmoss', 'light.greenlime', 'light.yellowgranola', 'light.greysteel', 'light.orangecarrot', 'light.redruby', 'light.purplemonster'
@@ -33,7 +33,7 @@ export const environment = {
     measurementId: 'G-8ETT79WRRN'
   },
 
-  facebookAppId:'3554144754674563',
-  googleClientId:'231773896593-claceh4rtjvpqjd6mmv4bf05k0ifd15v.apps.googleusercontent.com'
+  facebookAppId: '3554144754674563',
+  googleClientId: '231773896593-claceh4rtjvpqjd6mmv4bf05k0ifd15v.apps.googleusercontent.com'
 
 };

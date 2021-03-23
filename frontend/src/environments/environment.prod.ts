@@ -4,9 +4,9 @@
 
 export const environment = {
   production: true,
-  apiUrl:  'https://ideaplan.herokuapp.com',
-  baseDomain: 'ideaplan.io',
-  s3BucketUrl: 'https://ideaplan.s3.us-east-2.amazonaws.com/',
+  apiUrl: 'https://task.herokuapp.com',
+  baseDomain: '',
+  s3BucketUrl: '',
   defaultMenuType: 'menu-default',
   subHiddenBreakpoint: 1440,
   menuHiddenBreakpoint: 768,

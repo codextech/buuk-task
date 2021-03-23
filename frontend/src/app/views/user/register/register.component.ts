@@ -38,6 +38,7 @@ export class RegisterComponent implements OnInit {
 
   formInit() {
     this.form = this.formBuilder.group<RegisterCredentials>({
+      name: ['', [Validators.required, Validators.required]],
       email: ['', [Validators.required, Validators.email]],
       password: [null, [Validators.required, Validators.pattern('^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$')]],
       confirmPassword: ['', [Validators.required]]

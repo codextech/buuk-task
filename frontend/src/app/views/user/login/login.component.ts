@@ -11,15 +11,15 @@ import { AlertService } from 'src/app/core/services/alert.service';
 })
 export class LoginComponent implements OnInit {
   @ViewChild('loginForm') loginForm: NgForm;
-  emailModel = 'tanzeel@getnada.com';
-  passwordModel = 'Asdf@123';
+  emailModel = '';
+  passwordModel = '';
 
   buttonDisabled = false;
   buttonState = '';
 
   constructor(private authService: AuthService,
     private alertService: AlertService,
-     private notifications: NotificationsService, private router: Router) { }
+    private notifications: NotificationsService, private router: Router) { }
 
   ngOnInit() {
   }
@@ -32,11 +32,14 @@ export class LoginComponent implements OnInit {
     this.buttonState = 'show-spinner';
     this.authService.login(this.loginForm.value).subscribe((user) => {
       this.router.navigate(['/']);
-
+      this.buttonDisabled = false;
+      this.buttonState = '';
     }, (error) => {
       this.buttonDisabled = false;
       this.buttonState = '';
-      // this.notifications.create('Error', error.message, NotificationType.Bare, { theClass: 'outline primary', timeOut: 6000, showProgressBar: false });
+    }, () => {
+      this.buttonDisabled = false;
+      this.buttonState = '';
     });
   }
 
@@ -49,7 +52,7 @@ export class LoginComponent implements OnInit {
 
     }, err => {
       this.alertService.addError('Error', 'Something Went Wrong')
-    console.log("🚀 ~ file: register.component.ts ~ line 44 ~ RegisterComponent ~ this.authService.fbLogin ~ err", err)
+      console.log("🚀 ~ file: register.component.ts ~ line 44 ~ RegisterComponent ~ this.authService.fbLogin ~ err", err)
     });
   }
 
