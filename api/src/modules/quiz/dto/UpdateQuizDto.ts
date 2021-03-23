@@ -19,6 +19,8 @@ export class UpdateQuizDto {
 
     @IsArray()
     @Type(() => AttemptedQuestion)
-    attemptedQuestion: AttemptedQuestion[]
+    attemptedQuestion: AttemptedQuestion[];
+
+    endedAt : Date;
 
 }

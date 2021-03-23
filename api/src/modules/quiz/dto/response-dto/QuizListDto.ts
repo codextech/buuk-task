@@ -1,6 +1,7 @@
 
 
 import { Exclude, Expose } from "class-transformer";
+import { QuizDetailsDto } from "./QuizDetailsDto";
 
 
 
@@ -9,7 +10,7 @@ import { Exclude, Expose } from "class-transformer";
 export class QuizListDto {
 
     @Expose()
-    data?: QuizListDto[]
+    data?: QuizDetailsDto[]
 
 
     @Expose()

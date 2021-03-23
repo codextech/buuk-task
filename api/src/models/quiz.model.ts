@@ -12,7 +12,7 @@ export const QuizSchema = new mongoose.Schema(
             ref: 'User',
             required: [true, 'user is required']
         },
-        score: { type: Number },
+        score: { type: Number, default: 0 },
 
         attemptedQuestions: [
             {
