@@ -1,0 +1,53 @@
+<div class="card auth-card">
+  <div class="position-relative image-side ">
+    <p class=" text-white h2">Task</p>
+    <p class="white mb-0">
+      Please use the form to register.
+      <br>If you are a member, please
+      <a routerLink="/user/login" class="white white-underline-link">login</a>.
+    </p>
+  </div>
+  <div class="form-side">
+    <h6 class="mb-4">Register</h6>
+
+    <form [formGroup]="form"  #f="ngForm"  (ngSubmit)="onSubmit()" novalidate class="tooltip-label-right">
+
+        <label class="form-group has-float-label">
+        <input formControlName="email" type="email" class="form-control" name="email" placeholder="Email">
+        <span>Name</span>
+        <div *ngIf="formFields.email.errors?.required && f.submitted" class="invalid-tooltip">Name is required!</div>
+      </label>
+
+      <label class="form-group has-float-label">
+        <input formControlName="email" type="email" class="form-control" name="email" placeholder="Email">
+        <span>Email</span>
+        <div *ngIf="formFields.email.errors?.required && f.submitted" class="invalid-tooltip">Email is required!</div>
+        <div *ngIf="formFields.email?.errors?.email && f.submitted" class="invalid-tooltip">Email is invalid!</div>
+      </label>
+
+      <label class="form-group has-float-label">
+        <input formControlName="password" type="password" class="form-control" name="password" placeholder="Password">
+        <span>Password</span>
+        <div *ngIf="formFields.password?.errors?.required && f.submitted" class="invalid-tooltip">Password is required!</div>
+        <div *ngIf="formFields.password?.errors?.pattern && f.submitted" class="invalid-tooltip">Password must include alpha numeric,special character and must be 8 characters long!</div>
+      </label>
+
+      <label class="form-group has-float-label">
+        <input formControlName="confirmPassword" type="password" class="form-control" name="password" placeholder="Confirm Password">
+        <span>Confirm Password</span>
+        <div *ngIf="formFields.confirmPassword?.errors?.required && f.submitted" class="invalid-tooltip">Confirm Password is required !</div>
+        <div *ngIf="form?.errors && f.submitted" class="invalid-tooltip">Confirm Password not matched !</div>
+      </label>
+
+      <div class="d-flex justify-content-between align-items-center">
+        <a routerLink="/user/forgot-password">{{ 'user.forgot-password' | translate }}?</a>
+        <app-state-button [btnClass]="'btn btn-primary btn-lg btn-shadow'" [currentState]="buttonState"
+          [isDisabled]="buttonDisabled" click="onLoginClick()">
+          Register
+        </app-state-button>
+      </div>
+    </form >
+
+  </div>
+</div>
+<simple-notifications></simple-notifications>

@@ -1,0 +1,35 @@
+<div class="card auth-card">
+  <div class="position-relative image-side ">
+    <p class=" text-white h2">Task</p>
+    <p class="white mb-0">
+      Please use your credentials to login.
+      <br>If you are not a member, please
+      <a routerLink="/user/register" class="white white-underline-link">register</a>.
+    </p>
+  </div>
+  <div class="form-side">
+    <h6 class="mb-4">Login</h6>
+
+    <form #loginForm="ngForm" novalidate (ngSubmit)="onSubmit()">
+      <label class="form-group has-float-label">
+        <input class="form-control" required email ngModel #email="ngModel" name="email" [(ngModel)]="emailModel" />
+        <span>Email</span>
+        <div *ngIf="!email.valid && loginForm.submitted" class="invalid-tooltip">Email is required!</div>
+      </label>
+      <label class="form-group has-float-label">
+        <input class="form-control" type="password" placeholder="" required ngModel #password="ngModel" name="password"
+          [(ngModel)]="passwordModel" />
+        <span>Password </span>
+        <div *ngIf="!password.valid && loginForm.submitted" class="invalid-tooltip">Password is required!</div>
+      </label>
+      <div class="d-flex justify-content-between align-items-center">
+        <a routerLink="/user/forgot-password">{{ 'user.forgot-password' | translate }}?</a>
+        <app-state-button [btnClass]="'btn btn-primary btn-lg btn-shadow'" [currentState]="buttonState"
+          [isDisabled]="buttonDisabled" click="onLoginClick()">
+          {{ 'Login' | uppercase }}
+        </app-state-button>
+      </div>
+    </form>
+
+  </div>
+</div>
