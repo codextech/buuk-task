@@ -1,3 +1,4 @@
+import { QuestionModule } from './modules/question/question.module';
 import { QuizModule } from './modules/quiz/quiz.module';
 import { SharedModule } from './shared/shared.module';
 import { UserModule } from './modules/user/user.module';
@@ -7,9 +8,11 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { MongooseModule } from '@nestjs/mongoose';
+import { SeedsModule } from './shared/seeds.module';
 
 @Module({
   imports: [
+    QuestionModule,
     QuizModule,
     ConfigModule.forRoot({
       envFilePath: `./env/.${process.env.NODE_ENV || 'development'}.env`,
@@ -27,6 +30,8 @@ import { MongooseModule } from '@nestjs/mongoose';
         },
         inject: [ConfigService],
       }),
+
+    SeedsModule,
 
     SharedModule, UserModule, AuthModule],
   controllers: [AppController],
