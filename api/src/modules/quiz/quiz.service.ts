@@ -2,6 +2,7 @@
 import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
+import { QuestionService } from '../question/question.service';
 import { CreateQuizDto } from './dto/CreateQuizDto';
 import { UpdateQuizDto } from './dto/UpdateQuizDto';
 import { QuizDocument } from './interface/QuizDocument';
@@ -11,7 +12,8 @@ export class QuizService {
 
 
     constructor(
-        @InjectModel('Quiz') private readonly quizModel: Model<QuizDocument>
+        @InjectModel('Quiz') private readonly quizModel: Model<QuizDocument>,
+        private questionService: QuestionService
     ) { }
 
 
@@ -30,7 +32,21 @@ export class QuizService {
 
 
     async create(body: CreateQuizDto) {
-        return await this.quizModel.create(body);
+
+        /*  pick random 4 question */
+        const questions = await this.questionService.getRandomQuestion()
+
+        const questionsModelForQuiz = questions.map(q => {
+            return {
+                questionId: q._id
+            }
+        });
+
+        body.attemptedQuestion = questionsModelForQuiz;
+        /* crerate quiz */
+        await this.quizModel.create(body);
+
+        return questions;
     }
 
 

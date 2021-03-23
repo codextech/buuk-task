@@ -31,7 +31,7 @@ export class QuizController {
 
 
     @Post()
-    async create(@AuthUser() user: UserDetailsDto, @Body() body: CreateQuizDto): Promise<QuizDetailsDto> {
+    async create(@AuthUser() user: UserDetailsDto, @Body() body: CreateQuizDto) {
         /* curent logged-in user added - could be set in interceptor too */
         body.userId = user._id;
         const result = await this.quizService.create(body);

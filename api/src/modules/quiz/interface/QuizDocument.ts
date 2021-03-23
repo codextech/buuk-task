@@ -7,7 +7,7 @@ import { Document } from 'mongoose';
 export class QuizQuestionsDocument {
     _id: string
     questionId?: string;
-    isCorrectAnswer?: string;
+    isCorrectAnswer?: boolean;
 }
 
 export class QuizDocument extends Document {

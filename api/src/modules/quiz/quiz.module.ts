@@ -4,6 +4,7 @@ import { Module } from '@nestjs/common';
 import { SharedModule } from 'src/shared/shared.module';
 import { MongooseModule } from '@nestjs/mongoose';
 import { QuizSchema } from 'src/models/quiz.model';
+import { QuestionModule } from '../question/question.module';
 
 @Module({
     imports: [
@@ -16,7 +17,8 @@ import { QuizSchema } from 'src/models/quiz.model';
                 return schema;
             }
         }]),
-        SharedModule
+        SharedModule,
+        QuestionModule
     ],
     controllers: [
         QuizController,],
