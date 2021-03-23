@@ -1,5 +1,6 @@
 import { NestFactory } from '@nestjs/core';
 import { CommandModule, CommandService } from 'nestjs-command';
+import { AppModule } from './app.module';
 
 (async () => {
     const app = await NestFactory.createApplicationContext(AppModule, {
@@ -10,7 +11,3 @@ import { CommandModule, CommandService } from 'nestjs-command';
         .get(CommandService)
         .exec();
 })();
-
-function AppModule(AppModule: any, arg1: { logger: false; }) {
-    throw new Error('Function not implemented.');
-}

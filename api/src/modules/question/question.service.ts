@@ -11,7 +11,7 @@ export class QuestionService {
 
 
     async bulkCreate(data) {
-        await this.questionModel.insertMany(data);
+        return await this.questionModel.insertMany(data);
     }
 
 

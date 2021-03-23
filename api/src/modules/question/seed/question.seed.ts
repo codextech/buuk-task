@@ -16,6 +16,6 @@ export class QuestionSeed {
     @Command({ command: 'create:question', describe: 'create some questions', autoExit: true })
     async create() {
         const result = await this.questionService.bulkCreate(data.questions);
-        console.log(result);
+        console.log('kuta ', result);
     }
 }
