@@ -4,23 +4,28 @@
 
 
 import { Type } from "class-transformer";
-import { IsArray, IsNotEmpty, IsString } from "class-validator";
+import { IsArray, IsNotEmpty, IsNumber, IsString } from "class-validator";
 
 
 export class AttemptedQuestion {
 
     @IsString()
-    question: string;
+    question?: string;
+    isCorrectAnswer: boolean
+
 }
 
 
 export class UpdateQuizDto {
 
 
-    @IsArray()
+    @IsNotEmpty()
     @Type(() => AttemptedQuestion)
-    attemptedQuestion: AttemptedQuestion[];
+    attemptedQuestions: AttemptedQuestion[];
 
-    endedAt : Date;
+    @IsNumber()
+    score: number;
+
+    endedAt: Date;
 
 }

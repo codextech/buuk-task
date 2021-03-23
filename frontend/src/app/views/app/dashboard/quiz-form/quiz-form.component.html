@@ -17,12 +17,37 @@
       <div class="card-body">
         <h6>{{item.text | titlecase}}</h6>
         <div class="mb-4">
-          <div *ngFor="let ans of item.answers" class="custom-control custom-radio">
-            <input (click)="onClickAnswer(item._id, ans._id)" type="radio" [id]="ans._id"  class="custom-control-input">
-            <label (click)="onClickAnswer(item._id, ans._id)" class="custom-control-label" [for]="ans._id">{{ans.text | titlecase}}</label>
+          <form #f="ngForm">
+
+          <div *ngFor="let ans of item.answers"  class="">
+             <!-- <input
+            (click)="onClickAnswer(item._id, ans._id)"
+
+            > -->
+            <input
+
+              [(ngModel)]="options[item._id]"
+              [checked]="options[item._id]"
+              value="{{ans._id}}"
+              name="option{{item._id}}"
+              type="radio" [id]="ans._id"
+              (click)="onClickAnswer(item._id, ans._id)"
+             >
+            <label for="option{{item._id}}">{{ans.text | titlecase}}</label>
           </div>
+
+          </form>
+
         </div>
       </div>
     </div>
+  </div>
+</div>
+
+
+
+<div class="row justify-content-center">
+  <div class="col-4">
+      <button *ngIf="quizStarted" (click)="submitQuiz()"  type="button" class="btn btn-block btn-info btn-md mb-5"> Submit Quiz </button>
   </div>
 </div>

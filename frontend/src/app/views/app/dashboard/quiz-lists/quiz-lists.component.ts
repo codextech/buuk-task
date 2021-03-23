@@ -13,6 +13,9 @@ export class QuizListsComponent implements OnInit {
 
   data: Quiz[] = [];
 
+  avgScore: number = 0;
+  avgDuration: number = 0;
+
   subscription: Subscription;
 
   constructor(
@@ -26,6 +29,21 @@ export class QuizListsComponent implements OnInit {
       (res) => {
         console.log("🚀 ~ file: quiz-lists.component.ts ~ line 26 ~ QuizListsComponent ~ ngOnInit ~ res", res)
         this.data = res;
+
+        let totalScore = 0;
+        let totalDur = 0;
+        /* find avg score and duration */
+        this.data.forEach(q => {
+          totalScore += +q.score;
+          totalDur += +q.duration
+        });
+
+        console.log(totalDur);
+        console.log(totalDur / this.data.length);
+
+        this.avgDuration = +(totalDur / this.data.length).toFixed(0);
+        this.avgScore = +(totalScore / this.data.length).toFixed(2)
+
       },
       (err) => {
         console.log(err);

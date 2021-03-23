@@ -7,6 +7,7 @@ export class Quiz {
   endedAt?: Date;
   startedAt?: Date;
   CreatedAt?: Date;
+  duration?: number;
   attemptedQuestions?: QuizQuestion[];
   isDeleted?: boolean;
 }

@@ -2,7 +2,7 @@
 
 
 import { Exclude, Expose, Transform } from "class-transformer";
-import moment from "moment";
+import * as moment from "moment";
 
 
 
@@ -22,7 +22,7 @@ export class QuizDetailsDto {
 
 
     @Expose()
-    startedAt?: Date;
+    statredAt?: Date;
 
     @Expose()
     endedAt?: Date;
@@ -30,7 +30,13 @@ export class QuizDetailsDto {
 
     @Expose()
     duration() {
-        return (moment.duration(moment(this.endedAt).diff(this.startedAt, 'seconds', true))) || 0;
+        // const d = moment.duration(moment(this.startedAt).diff(this.endedAt)).asSeconds().toFixed(0) || 0;
+
+
+        const startDate = moment.utc(this.statredAt);
+        const endDate = moment.utc(this.endedAt);
+        const duration = moment.duration(endDate.diff(startDate));
+        return +duration.seconds().toFixed(0);
     }
 
 

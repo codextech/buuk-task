@@ -54,7 +54,8 @@ export class QuizService extends ApiService<Quiz> {
   startQuiz() {
     return super.post('', {}, {}).pipe(
       map((res: any) => {
-        return (res.data as Question[]);
+
+        return (res.data as { quizId: string, questions: Question[] });
       })
     );
   }

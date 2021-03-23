@@ -25,7 +25,7 @@ export const QuizSchema = new mongoose.Schema(
         ],
 
 
-        statredAt: { type: Date, default: Date.now() },
+        statredAt: { type: Date, default: new Date() },
         endedAt: { type: Date },
 
 

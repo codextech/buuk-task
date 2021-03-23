@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FormArray, FormBuilder, FormControl, FormGroup } from '@angular/forms';
+import { Router } from '@angular/router';
 import { IFormBuilder, IFormGroup } from '@rxweb/types';
 import { Question } from 'src/app/core/models/question/question.model';
 import { Quiz, QuizQuestion } from 'src/app/core/models/quiz/quiz.model';
+import { AlertService } from 'src/app/core/services/alert.service';
 import { QuizService } from 'src/app/core/services/quiz.service';
 
 @Component({
@@ -14,41 +16,34 @@ export class QuizFormComponent implements OnInit {
 
   questions: Question[] = [];
 
+
+  options: any = [];
+  option: any = [];
+
   answertaken: QuizQuestion[] = [];
 
-
-  // form
-  form: FormGroup;
-  formBuilder: FormBuilder;
-
+  currentQuizId: string;
 
   quizStarted = false;
   constructor(
     private quizService: QuizService,
-    formBuilder: FormBuilder
+    private router: Router,
+    private alertService: AlertService,
   ) {
-    this.formBuilder = formBuilder;
 
   }
 
 
   ngOnInit() {
-    this.formInit()
   }
 
-
-  formInit() {
-    this.form = this.formBuilder.group({
-      ansers: this.genAnswerArray(),
-      quizId: new FormControl(123)
-    });
-  }
 
 
   startQuiz() {
     this.quizService.startQuiz().subscribe(res => {
       this.quizStarted = true;
-      this.questions = res;
+      this.questions = res.questions;
+      this.currentQuizId = res.quizId
     }, err => {
       console.log("🚀 ~ ", err)
     })
@@ -78,7 +73,6 @@ export class QuizFormComponent implements OnInit {
 
   submitQuiz() {
 
-    console.log('...........', this.form.value);
 
 
     let body: Quiz = {
@@ -94,28 +88,15 @@ export class QuizFormComponent implements OnInit {
     })
     console.log(body);
 
-    return
 
-
-    this.quizService.startQuiz().subscribe(res => {
+    this.quizService.submitQuiz(body, this.currentQuizId).subscribe(res => {
       this.quizStarted = false;
-      this.questions = res;
+      this.alertService.addSuccess('Quiz Submitted', '');
+      this.router.navigate(['/']);
     }, err => {
       console.log("🚀 ~ ", err)
     })
   }
 
-
-  genAnswerArray(): FormArray {
-    const roomsArray = new FormArray([]);
-    for (let i = 0; i < 4; i++) {
-      const answerGroup = new FormGroup({
-        answerId: new FormControl('')
-      });
-
-      roomsArray.push(answerGroup);
-    }
-    return roomsArray;
-  }
 
 }

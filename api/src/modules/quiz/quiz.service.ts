@@ -18,7 +18,9 @@ export class QuizService {
 
 
     getList(query) {
-        return this.quizModel.find(query);
+        return this.quizModel.find(query).sort({
+            _id: -1
+        });
     }
 
 
@@ -44,18 +46,24 @@ export class QuizService {
 
         body.attemptedQuestion = questionsModelForQuiz;
         /* crerate quiz */
-        await this.quizModel.create(body);
+        const creratedQuiz = await this.quizModel.create(body);
 
-        return questions;
+        return { quizId: creratedQuiz._id, questions };
     }
 
 
     async sumbitUserQuiz(id, body: UpdateQuizDto) {
 
         /* set end date */
-        body.endedAt = new Date(Date.now());
+        body.endedAt = new Date();
 
-        return await this.quizModel.findByIdAndUpdate(id, body);
+        return await this.quizModel.findByIdAndUpdate(id, {
+            $set: {
+                endedAt: body.endedAt,
+                attemptedQuestions: body.attemptedQuestions,
+                score: body.score
+            }
+        });
     }
 
 
