@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 import { map, tap } from 'rxjs/operators';
+import { Question } from '../models/question/question.model';
 import { Quiz } from '../models/quiz/quiz.model';
 import { ApiService } from './api.service';
 
@@ -48,28 +49,14 @@ export class QuizService extends ApiService<Quiz> {
   }
 
 
-  postItem(editMode: boolean, model: Quiz, id?: any, options?: any) {
-    if (!editMode) {
-      return super.post('', model, {}).pipe(
-        map((res: any) => {
-          return (res.data as Quiz);
-        }),
-        tap(data => {
-          this.setQuizes = [...this.quizes, data];
-        })
-      );
-    } else {
-      return super.put(`${model._id}`, model).pipe(
-        map((res: any) => {
-          return (res.data as Quiz);
-        }),
-        tap((data: Quiz) => {
-          let index = this.quizes.findIndex(b => b._id == data._id)
-          this.quizes[index] = data; // temporary
-          this.setQuizes = [...this.quizes];
-        })
-      );
-    }
+
+
+  startQuiz() {
+    return super.post('', {}, {}).pipe(
+      map((res: any) => {
+        return (res.data as Question[]);
+      })
+    );
   }
 
   submitQuiz(model: Quiz, id?: any, options?: any) {

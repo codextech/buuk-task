@@ -8,6 +8,7 @@ import { SharedModule } from 'src/app/shared/shared.module';
 import { DashboardRoutingModule } from './dashboard.routing';
 import { AnalyticsComponent } from './analytics/analytics.component';
 import { QuizListsComponent } from './quiz-lists/quiz-lists.component';
+import { QuizFormComponent } from './quiz-form/quiz-form.component';
 
 @NgModule({
   imports: [
@@ -21,7 +22,8 @@ import { QuizListsComponent } from './quiz-lists/quiz-lists.component';
   declarations: [
     DashboardComponent,
     AnalyticsComponent,
-    QuizListsComponent
+    QuizListsComponent,
+    QuizFormComponent
   ]
 })
 export class DashboardModule { }

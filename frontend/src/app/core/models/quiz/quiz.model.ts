@@ -1,16 +1,16 @@
 
 
 export class Quiz {
-  _id: string;
-  userId: string;
-  score: number;
+  _id?: string;
+  userId?: string;
+  score?: number;
   attemptedQuestions?: QuizQuestion[];
   isDeleted?: boolean;
 }
 
 
 export class QuizQuestion {
-  _id: string
+  _id?: string
   questionId?: string;
-  isCorrectAnswer?: string;
+  isCorrectAnswer?: boolean;
 }

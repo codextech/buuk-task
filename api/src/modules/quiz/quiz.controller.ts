@@ -35,6 +35,7 @@ export class QuizController {
         /* curent logged-in user added - could be set in interceptor too */
         body.userId = user._id;
         const result = await this.quizService.create(body);
+        console.log("🚀 ~ file: quiz.controller.ts ~ line 38 ~ QuizController ~ create ~ result", result)
         return result;
     }
 
