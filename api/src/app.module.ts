@@ -1,3 +1,4 @@
+import { QuizModule } from './modules/quiz/quiz.module';
 import { SharedModule } from './shared/shared.module';
 import { UserModule } from './modules/user/user.module';
 import { AuthModule } from './modules/auth/auth.module';
@@ -9,6 +10,7 @@ import { MongooseModule } from '@nestjs/mongoose';
 
 @Module({
   imports: [
+    QuizModule,
     ConfigModule.forRoot({
       envFilePath: `./env/.${process.env.NODE_ENV || 'development'}.env`,
       isGlobal: true
@@ -16,18 +18,18 @@ import { MongooseModule } from '@nestjs/mongoose';
     // database
     MongooseModule.forRootAsync(
       {
-      imports: [ConfigModule],
-      useFactory: async (configService: ConfigService) => {
-        // mongoose.set('debug' , true)
-        return {
-          uri: configService.get<string>('DATABASE_URI'),
-        }
-      },
-      inject: [ConfigService],
-    }),
-    
+        imports: [ConfigModule],
+        useFactory: async (configService: ConfigService) => {
+          // mongoose.set('debug' , true)
+          return {
+            uri: configService.get<string>('DATABASE_URI'),
+          }
+        },
+        inject: [ConfigService],
+      }),
+
     SharedModule, UserModule, AuthModule],
   controllers: [AppController],
   providers: [AppService],
 })
-export class AppModule {}
+export class AppModule { }

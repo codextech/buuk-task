@@ -3,7 +3,7 @@
 import * as mongoose from 'mongoose';
 import { Schema } from 'mongoose';
 
-export const QuestionSchema = new mongoose.Schema(
+export const QuizSchema = new mongoose.Schema(
     {
 
 
@@ -14,7 +14,7 @@ export const QuestionSchema = new mongoose.Schema(
         },
         score: { type: Number },
 
-        questions: [
+        attemptedQuestions: [
             {
                 questionId: {
                     type: Schema.Types.ObjectId,
