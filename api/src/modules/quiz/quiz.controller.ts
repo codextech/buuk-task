@@ -1,4 +1,9 @@
 import { Controller } from '@nestjs/common';
 
 @Controller()
-export class QuizController { }
+export class QuizController {
+
+
+
+
+}
