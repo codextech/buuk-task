@@ -18,11 +18,8 @@ import { RoleType } from 'src/core/common/constants/role-type';
 export class UserRegisterDto {
     @IsString()
     @IsNotEmpty()
-    readonly firstName: string;
+    readonly name: string;
 
-    @IsString()
-    @IsNotEmpty()
-    readonly lastName: string;
 
     @IsString()
     @IsEmail()
@@ -33,13 +30,4 @@ export class UserRegisterDto {
     @MinLength(6)
     readonly password: string;
 
-    @IsNotEmpty()
-    @IsOptional()
-    @IsArray()
-    @IsEnum(RoleType)
-    roles?: string[]
-
-    isVerified? : boolean;
-
-    
 }

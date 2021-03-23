@@ -1,0 +1,67 @@
+
+
+<div class="row">
+
+  <div class="col-12">
+    <div class="top-right-button-container text-zero mb-1">
+      <button (click)="true" type="button" class="top-right-button btn btn-primary btn-md mb-2"> Start Quiz </button>
+    </div>
+  </div>
+</div>
+
+
+
+<div class="row">
+  <div class="col-12 list">
+    <div
+    class="card-body pb-0 align-self-center d-flex flex-column flex-md-row justify-content-between min-width-zero align-items-md-center">
+    <a class=" text-muted text-small mb-11 truncate w-40 w-xs-100" href="javascript:;">
+    #
+    </a>
+    <p class="mb-1 text-muted text-small w-15 w-xs-100">Duration</p>
+    <p class="mb-1 text-muted text-small w-15 w-xs-100">Started Date</p>
+    <p class="mb-1 text-muted text-small w-15 w-xs-100">Score</p>
+  </div>
+
+
+  <ng-template #noData>
+    <div class="card-body mt-5 text-center no-data-conatiner">
+      <img src="/assets/img/icons-file-not-found.png"/>
+      <p class="font-weight-semibold text-muted mt-2 mb-0">Click above button to start new Quiz</p>
+    </div>
+  </ng-template>
+
+
+  <div *ngIf="data.length else noData">
+
+    <div [ngClass]="{'card d-flex flex-row mb-3': true}" *ngFor="let b of data; let i=index">
+      <div class="d-flex flex-grow-1 min-width-zero">
+        <div
+          class="card-body align-self-center d-flex flex-column flex-md-row justify-content-between min-width-zero align-items-md-center">
+          <a class="list-item-heading mb-0 truncate w-40 w-xs-100" href="javascript:;">
+            {{i+1}}
+          </a>
+          <p class="mb-0 text-muted text-small w-15 w-xs-100">{{'12 sec'}}</p>
+          <p class="mb-0 text-muted text-small w-15 w-xs-100">{{'12/23/201'}}</p>
+          <p class="mb-0 text-muted text-small w-15 w-xs-100">
+            <span class="badge badge-primary">
+              {{10}}
+            </span>
+            </p>
+        </div>
+        <!-- <label class="custom-control custom-checkbox mb-1 align-self-center pr-4">
+          <input type="checkbox" class="custom-control-input" [id]="'customCheck'+i" [checked]="isSelected(p)"
+            (change)="onSelect(p)">
+          <label class="custom-control-label" [for]="'customCheck'+i"></label>
+        </label> -->
+
+
+
+
+
+      </div>
+    </div>
+  </div>
+
+
+  </div>

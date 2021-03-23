@@ -7,6 +7,7 @@ import { LayoutContainersModule } from 'src/app/containers/layout/layout.contain
 import { SharedModule } from 'src/app/shared/shared.module';
 import { DashboardRoutingModule } from './dashboard.routing';
 import { AnalyticsComponent } from './analytics/analytics.component';
+import { QuizListsComponent } from './quiz-lists/quiz-lists.component';
 
 @NgModule({
   imports: [
@@ -19,7 +20,8 @@ import { AnalyticsComponent } from './analytics/analytics.component';
   ],
   declarations: [
     DashboardComponent,
-    AnalyticsComponent
+    AnalyticsComponent,
+    QuizListsComponent
   ]
 })
 export class DashboardModule { }
