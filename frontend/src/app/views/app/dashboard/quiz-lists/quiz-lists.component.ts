@@ -39,8 +39,6 @@ export class QuizListsComponent implements OnInit {
   }
 
 
-  createQuiz() {
 
-  }
 
 }
