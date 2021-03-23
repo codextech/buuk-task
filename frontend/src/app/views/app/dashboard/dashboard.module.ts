@@ -9,6 +9,7 @@ import { DashboardRoutingModule } from './dashboard.routing';
 import { AnalyticsComponent } from './analytics/analytics.component';
 import { QuizListsComponent } from './quiz-lists/quiz-lists.component';
 import { QuizFormComponent } from './quiz-form/quiz-form.component';
+import { FormsModule as FormsModuleAngular, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   imports: [
@@ -17,7 +18,9 @@ import { QuizFormComponent } from './quiz-form/quiz-form.component';
     DashboardsContainersModule,
     DashboardRoutingModule,
     ComponentsCardsModule,
-    CommonModule
+    CommonModule,
+    FormsModuleAngular,
+    ReactiveFormsModule
   ],
   declarations: [
     DashboardComponent,

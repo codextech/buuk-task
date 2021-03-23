@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
+import { Quiz } from 'src/app/core/models/quiz/quiz.model';
 import { QuizService } from 'src/app/core/services/quiz.service';
 
 @Component({
@@ -10,7 +11,7 @@ import { QuizService } from 'src/app/core/services/quiz.service';
 export class QuizListsComponent implements OnInit {
 
 
-  data: any[] = [{}];
+  data: Quiz[] = [];
 
   subscription: Subscription;
 

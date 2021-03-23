@@ -2,6 +2,7 @@
 
 
 import { Exclude, Expose, Transform } from "class-transformer";
+import moment from "moment";
 
 
 
@@ -25,6 +26,12 @@ export class QuizDetailsDto {
 
     @Expose()
     endedAt?: Date;
+
+
+    @Expose()
+    duration() {
+        return (moment.duration(moment(this.endedAt).diff(this.startedAt, 'seconds', true))) || 0;
+    }
 
 
     @Expose()

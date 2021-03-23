@@ -15,4 +15,5 @@ export class QuizDocument extends Document {
     score: number;
     attemptedQuestions?: QuizQuestionsDocument[];
     isDeleted?: boolean;
+    duration?: number
 }

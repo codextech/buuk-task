@@ -43,7 +43,7 @@ export class QuizController {
 
 
     @Put('/submit/:id')
-    async submitQuiz(@Param('id') id, @Body() body: UpdateQuizDto): Promise<QuizDetailsDto> {
+    async submitQuiz(@Param('id') id, @Body() body: UpdateQuizDto) {
         /* curent logged-in user added - could be set in interceptor too */
         const result = await this.quizService.sumbitUserQuiz(id, body);
         return result;

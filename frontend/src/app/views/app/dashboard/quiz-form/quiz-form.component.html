@@ -5,27 +5,23 @@
 <div class="row justify-content-center">
   <div class="col-4">
       <button *ngIf="!quizStarted" (click)="startQuiz()"  type="button" class="btn btn-block btn-primary btn-md mb-5"> Start Quiz ! </button>
-      <button *ngIf="quizStarted" (click)="startQuiz()"  type="button" class="btn btn-block btn-info btn-md mb-5"> Submit Quiz </button>
+      <button *ngIf="quizStarted" (click)="submitQuiz()"  type="button" class="btn btn-block btn-info btn-md mb-5"> Submit Quiz </button>
   </div>
 </div>
 
 
 
 <div class="row">
-
   <div class="col-md-12">
-
     <div *ngFor="let item of questions"  class="card mb-1">
       <div class="card-body">
-
-        <h6>{{item.text}}</h6>
+        <h6>{{item.text | titlecase}}</h6>
         <div class="mb-4">
           <div *ngFor="let ans of item.answers" class="custom-control custom-radio">
-            <input (click)="onClickAnswer(item._id, ans._id)" type="radio" [id]="ans._id" name="customRadio" class="custom-control-input">
-            <label class="custom-control-label">{{ans.text}}</label>
+            <input (click)="onClickAnswer(item._id, ans._id)" type="radio" [id]="ans._id"  class="custom-control-input">
+            <label (click)="onClickAnswer(item._id, ans._id)" class="custom-control-label" [for]="ans._id">{{ans.text | titlecase}}</label>
           </div>
         </div>
-
       </div>
     </div>
   </div>
