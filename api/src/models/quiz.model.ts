@@ -16,22 +16,18 @@ export const QuestionSchema = new mongoose.Schema(
 
         questions: [
             {
-                type: Schema.Types.ObjectId,
-                ref: 'Question',
+                questionId: {
+                    type: Schema.Types.ObjectId,
+                    ref: 'Question',
+                },
+                isCorrectAnswer: { type: Boolean, default: null }
             }
         ],
-
 
 
         statredAt: { type: Date, default: Date.now() },
         endedAt: { type: Date },
 
-        answers: [
-            {
-                text: { type: String, lowercase: true, required: true },
-                isRightAnswer: { type: Boolean, default: false }
-            }
-        ],
 
         // sofe delete
         isDeleted: { type: Boolean, default: false },
